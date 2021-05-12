@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 
 const routes: Routes = [{
+  path: 'checkout',
+  loadChildren: () => import('./pages/checkout-page/checkout-page.module').then(m => m.CheckoutPageModule)
+}, {
   path: '',
-  component: CheckoutPageComponent
+  loadChildren: () => import('./pages/main-page/main-page.module').then(m => m.MainPageModule)
+}, {
+  path: '',
+  redirectTo: '',
+  pathMatch: 'full'
 }];
 
 @NgModule({
