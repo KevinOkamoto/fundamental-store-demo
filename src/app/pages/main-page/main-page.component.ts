@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { EntityStore, EntityStoreBuilderFactory } from '@fundamental-ngx/store';
 import { Observable, of } from 'rxjs';
+import { Requisition } from 'src/app/store/models';
 
 @Component({
   selector: 'app-main-page',
@@ -8,12 +10,17 @@ import { Observable, of } from 'rxjs';
 })
 export class MainPageComponent implements OnInit {
 
+  store: EntityStore<Requisition>;
   requisitions$: Observable<any>;
 
-  constructor() { }
+  constructor( private builderFactory: EntityStoreBuilderFactory ) {
+    const builder = builderFactory.create(Requisition);
+    this.store = builder.create();
+  }
 
   ngOnInit(): void {
-    this.requisitions$ = of([]);
+    const query = this.store.queryBuilder.build();
+    this.requisitions$ = query.fetch();
   }
 
 }
