@@ -7,7 +7,7 @@ const routes: Routes = [{
   path: '',
   component: MainPageComponent
 }, {
-  path: 'checkout',
+  path: 'checkout/:id',
   component: CheckoutPageComponent
 }, {
   path: '',

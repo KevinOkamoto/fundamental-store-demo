@@ -1,22 +1,26 @@
-<fdp-table [dataSource]="requisitions$ | async" role="" emptyTableMessage="No data found"
-  i18n-emptyTableMessage>
+<div style="padding: 1rem;">
+  <fdp-table [dataSource]="requisitions$ | async" role="" emptyTableMessage="No data found" i18n-emptyTableMessage>
 
-  <fdp-table-toolbar title="Requisitions" i18n-title [hideItemCount]="false">
-  </fdp-table-toolbar>
+    <fdp-table-toolbar title="Requisitions" i18n-title [hideItemCount]="false">
+    </fdp-table-toolbar>
 
-  <fdp-column name="title" key="title" label="Title" i18n-label>
-  </fdp-column>
+    <fdp-column name="title" key="title" label="Title" i18n-label>
+      <fdp-table-cell tabindex="0" role="" *fdpCellDef="let item">
+        <a [routerLink]="['/checkout', item.identity]">{{item.title}}</a>
+      </fdp-table-cell>
+    </fdp-column>
 
-  <fdp-column name="requestor" key="requestor.name" label="Requestor" i18n-label>
-  </fdp-column>
+    <fdp-column name="requestor" key="requestor.name" label="Requestor" i18n-label>
+    </fdp-column>
 
-  <fdp-column name="supplier" key="supplier" label="Supplier" role="" i18n-label>
-    <fdp-table-cell tabindex="0" role="" *fdpCellDef="let item">
-      {{item.supplier.name}}
-    </fdp-table-cell>
-  </fdp-column>
+    <fdp-column name="supplier" key="supplier" label="Supplier" role="" i18n-label>
+      <fdp-table-cell tabindex="0" role="" *fdpCellDef="let item">
+        {{item.supplier.name}}
+      </fdp-table-cell>
+    </fdp-column>
 
-  <fdp-column name="commodity" key="commodityCode.name" label="Commodity" i18n-label>
-  </fdp-column>
+    <fdp-column name="commodity" key="commodityCode.name" label="Commodity" i18n-label>
+    </fdp-column>
 
-</fdp-table>
+  </fdp-table>
+</div>
