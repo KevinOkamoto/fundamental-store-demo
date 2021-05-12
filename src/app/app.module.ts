@@ -3,18 +3,26 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ShellbarModule } from '@fundamental-ngx/core';
+import { RtlService, ShellbarModule } from '@fundamental-ngx/core';
+import { SharedModule } from './shared.module';
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainPageComponent,
+    CheckoutPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SharedModule,
     ShellbarModule
   ],
-  providers: [],
+  providers: [
+    RtlService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,43 @@
-<p>main-page works!</p>
+<fdp-table [dataSource]="requisitions$ | async" role="" emptyTableMessage="No data found"
+  i18n-emptyTableMessage>
+
+  <fdp-table-toolbar role="" title="Requisitions" i18n-title [hideItemCount]="false">
+  </fdp-table-toolbar>
+
+  <fdp-column name="lineNumber" key="line" label="Line" role="" align="center">
+    <fdp-table-cell role="" *fdpCellDef="let item">
+      {{item.lineItemNumber}}
+    </fdp-table-cell>
+  </fdp-column>
+
+  <fdp-column name="name" role="" key="itemShortText" label="Name" i18n-label>
+    <fdp-table-cell role="" *fdpCellDef="let item">
+      {{item.name}}
+    </fdp-table-cell>
+  </fdp-column>
+
+  <fdp-column name="supplier" key="supplier" label="Supplier" role="" i18n-label>
+    <fdp-table-cell tabindex="0" role="" *fdpCellDef="let item">
+      {{item.supplier.name}}
+    </fdp-table-cell>
+  </fdp-column>
+
+  <fdp-column name="pricePerItem" key="price" role="" label="Price per item" i18n-label align="end">
+    <fdp-table-cell role="" tabindex="0" *fdpCellDef="let item">
+      {{item.price}}
+    </fdp-table-cell>
+  </fdp-column>
+
+  <fdp-column name="quantity" key="quantity" label="Quantity" role="" i18n-label align="end">
+    <fdp-table-cell role="" *fdpCellDef="let item">
+      {{item.quantity}}
+    </fdp-table-cell>
+  </fdp-column>
+
+  <fdp-column name="price" key="totalNetAmount" label="Net amount" role="" i18n-label align="end">
+    <fdp-table-cell role="" tabindex="0" *fdpCellDef="let item">
+      {{item.totalNetAmount}}
+    </fdp-table-cell>
+  </fdp-column>
+
+</fdp-table>
