@@ -1,10 +1,16 @@
 import { FundamentalStoreConfig } from "@fundamental-ngx/store";
 
-import { Requisition } from './models';
+import {
+  Address,
+  Requisition
+} from './models';
 
 // Set the default URL root for all entities registered
 export const storeConfig: FundamentalStoreConfig = {
   root: 'http://localhost:3000/',
-  entities: { Requisition },
+  entities: {
+    Address,
+    Requisition
+  },
   enableDevtools: true
 };

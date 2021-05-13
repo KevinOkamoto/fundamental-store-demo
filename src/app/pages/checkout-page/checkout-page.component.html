@@ -1,1 +1,174 @@
-<p>checkout-page works!</p>
+<div *ngIf="(requisition$ | async) as requisition">
+  <fd-layout-panel>
+    <fd-layout-panel-header>
+      <fd-layout-panel-head>
+        <h2 fd-layout-panel-title>Checkout Page Title</h2>
+        <fd-layout-panel-description>Subtitle</fd-layout-panel-description>
+      </fd-layout-panel-head>
+      <fd-layout-panel-actions>
+        <fdp-button label="Submit"></fdp-button>
+        <fdp-button label="Edit" buttonType="emphasized" style="margin-left: 1em;"></fdp-button>
+      </fd-layout-panel-actions>
+    </fd-layout-panel-header>
+    <fd-layout-panel-body>
+      <form #myForm="ngForm">
+        <fdp-form-group [formGroup]="formGroup" [object]="requisition" columnLayout="XL2-L2-M2-S1">
+          <fdp-form-field #titleField label="Title" [id]="'title'" [column]="1" [rank]="1" placeholder="Enter title">
+            <fdp-input name="title" type="text" [value]="requisition.title"> </fdp-input>
+          </fdp-form-field>
+          <fdp-form-field #subTitleField label="Subtitle" id="subtitle" [column]="1" [rank]="2"
+            placeholder="Enter subtitle">
+            <fdp-input name="subtitle" type="text" [value]="requisition.subtitle"> </fdp-input>
+          </fdp-form-field>
+          <fdp-form-field #shippingAddressField label="Shipping Address" id="shippingAddress" [column]="1" [rank]="3">
+            <fdp-combobox name="shippingAddress" [value]="requisition.shippingAddress.address" [displayKey]="'address'"
+              [lookupKey]="'address'" [dataSource]="addresses$"></fdp-combobox>
+          </fdp-form-field>
+          <fdp-form-field #billingAddressField label="Billing Address" id="billingAddress" [column]="1" [rank]="4">
+            <fdp-combobox name="billingAddress" [value]="requisition.billingAddress.address" [displayKey]="'address'"
+              [lookupKey]="'address'" [dataSource]="addresses$"></fdp-combobox>
+          </fdp-form-field>
+          <fdp-form-field #supplierField label="Supplier" id="supplier" [column]="1" [rank]="5">
+            <fdp-combobox name="supplier" [value]="requisition.supplier.name" [dataSource]="suppliers$"
+              [displayKey]="'name'" [lookupKey]="'name'"></fdp-combobox>
+          </fdp-form-field>
+          <fdp-form-field #dueDateField label="Due Date" id="dueOn" [column]="2" [rank]="6">
+            <fdp-date-picker name="dueOn" type="single" [value]="requisition.dueOn"></fdp-date-picker>
+          </fdp-form-field>
+          <fdp-form-field #currencyField label="Currency" id="currency" [column]="2" [rank]="7">
+            <fdp-select name="currency" [value]="requisition.currency" [list]="['USD']"> </fdp-select>
+          </fdp-form-field>
+          <fdp-form-field #requesterField label="Requestor" id="requestor" [column]="2" [rank]="8">
+            <fdp-input-group name="requestor" [value]="requisition.requestor.name">
+              <fdp-input-group-input type="text"></fdp-input-group-input>
+              <fdp-input-group-addon>
+                <fdp-button glyph="value-help"></fdp-button>
+              </fdp-input-group-addon>
+            </fdp-input-group>
+          </fdp-form-field>
+          <fdp-form-field #commodityCodeField label="Commodity Code" id="commodityCode" [column]="2" [rank]="9">
+            <fdp-input-group name="commodityCode" [value]="requisition.commodityCode.name">
+              <fdp-input-group-input type="text"></fdp-input-group-input>
+              <fdp-input-group-addon>
+                <fdp-button glyph="value-help"></fdp-button>
+              </fdp-input-group-addon>
+            </fdp-input-group>
+          </fdp-form-field>
+          <fdp-form-field #deliveryTypeField label="Delivery Type" id="deliveryType" [column]="2" [rank]="10">
+            <fdp-radio-group name="deliveryType" [selected]="'express'" isInline="true">
+              <fdp-radio-button value="over-night">Over Night</fdp-radio-button>
+              <fdp-radio-button value="express">Express</fdp-radio-button>
+            </fdp-radio-group>
+          </fdp-form-field>
+        </fdp-form-group>
+        <fdp-table [dataSource]="lineItems$ | async" emptyTableMessage="No data found"
+          i18n-emptyTableMessage>
+
+          <fdp-table-toolbar role="" title="Items" i18n-title [hideItemCount]="false">
+          </fdp-table-toolbar>
+
+          <fdp-column name="lineNumber" key="line" label="Line" role="" align="center">
+            <fdp-table-cell role="" *fdpCellDef="let item">
+              {{item.lineItemNumber}}
+            </fdp-table-cell>
+          </fdp-column>
+
+          <fdp-column name="name" role="" key="itemShortText" label="Name" i18n-label>
+            <fdp-table-cell role="" *fdpCellDef="let item">
+              {{item.name}}
+            </fdp-table-cell>
+          </fdp-column>
+
+          <fdp-column name="supplier" key="supplier" label="Supplier" role="" i18n-label>
+            <fdp-table-cell tabindex="0" role="" *fdpCellDef="let item">
+              {{item.supplier.name}}
+            </fdp-table-cell>
+          </fdp-column>
+
+          <fdp-column name="pricePerItem" key="price" role="" label="Price per item" i18n-label align="end">
+            <fdp-table-cell role="" tabindex="0" *fdpCellDef="let item">
+              {{item.price}}
+            </fdp-table-cell>
+          </fdp-column>
+
+          <fdp-column name="quantity" key="quantity" label="Quantity" role="" i18n-label align="end">
+            <fdp-table-cell role="" *fdpCellDef="let item">
+              {{item.quantity}}
+            </fdp-table-cell>
+          </fdp-column>
+
+          <fdp-column name="price" key="totalNetAmount" label="Net amount" role="" i18n-label align="end">
+            <fdp-table-cell role="" tabindex="0" *fdpCellDef="let item">
+              {{item.totalNetAmount}}
+            </fdp-table-cell>
+          </fdp-column>
+
+          <fdp-column name="lineItemDetailLink" key="catalogItemId">
+            <fdp-table-cell *fdpCellDef="let item">
+              <span (click)="openLineItemDialog(lineItemDialog, item)">
+                see details
+              </span>
+            </fdp-table-cell>
+          </fdp-column>
+        </fdp-table>
+      </form>
+    </fd-layout-panel-body>
+  </fd-layout-panel>
+</div>
+
+<ng-template let-dialog let-dialogConfig="dialogConfig" #lineItemDialog>
+  <fd-dialog [dialogConfig]="dialogConfig" [dialogRef]="dialog">
+    <fd-dialog-header>
+      <h1 fd-title>Line Item Details</h1>
+      <button fd-dialog-close-button (click)="dialog.dismiss('Close button')"></button>
+    </fd-dialog-header>
+
+    <fd-dialog-body>
+      <div style="display: flex;">
+        <div>
+          <fd-carousel width="300px" height="400px">
+            <fd-carousel-item>
+              <img src="http://placeimg.com/300/300/nature/1" alt="first image">
+            </fd-carousel-item>
+
+            <fd-carousel-item>
+              <img src="http://placeimg.com/300/300/nature/2" alt="second image">
+            </fd-carousel-item>
+
+            <fd-carousel-item>
+              <img src="http://placeimg.com/300/300/nature/3" alt="third image">
+            </fd-carousel-item>
+          </fd-carousel>
+        </div>
+        <div>
+          <form #lineItemForm="ngForm">
+            <fdp-form-group [formGroup]="lineItemFormGroup">
+              <fdp-form-field #nameField label="Name" id="name" [column]="1" [rank]="1">
+                <fdp-input name="name" type="text" [value]="dialog.data.item.name" [disabled]="true"> </fdp-input>
+              </fdp-form-field>
+              <fdp-form-field #priceField label="Unit Price" id="price" [column]="1" [rank]="2">
+                <fdp-input name="price" type="text" [value]="dialog.data.item.price" [disabled]="true"> </fdp-input>
+              </fdp-form-field>
+              <fdp-form-field #quantityField label="Quantity" id="quantity" [column]="1" [rank]="3">
+                <fdp-input name="quantity" type="text" [value]="dialog.data.item.quantity" [disabled]="true"> </fdp-input>
+              </fdp-form-field>
+              <fdp-form-field #supplierField label="Supplier" id="supplier" [column]="1" [rank]="4">
+                <fdp-input name="supplier" type="text" [value]="dialog.data.item.supplier.name" [disabled]="true">
+                </fdp-input>
+              </fdp-form-field>
+              <fdp-form-field #netAmountField label="Net Amount" id="netAmount" [column]="1" [rank]="5">
+                <fdp-input name="netAmount" type="text" [value]="dialog.data.item.totalNetAmount" [disabled]="true">
+                </fdp-input>
+              </fdp-form-field>
+            </fdp-form-group>
+          </form>
+        </div>
+      </div>
+    </fd-dialog-body>
+
+    <fd-dialog-footer>
+      <fd-button-bar fd-initial-focus label="Close" (click)="dialog.dismiss('Close')">
+      </fd-button-bar>
+    </fd-dialog-footer>
+  </fd-dialog>
+</ng-template>

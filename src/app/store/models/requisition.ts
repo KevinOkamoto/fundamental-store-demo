@@ -40,4 +40,5 @@ export class Requisition extends BaseEntity<RequisitionDTO> {
   get identity(): IdentityKey {
     return this.value.id;
   }
+
 }
