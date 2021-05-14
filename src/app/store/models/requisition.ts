@@ -25,7 +25,6 @@ export interface RequisitionDTO {
   name: 'Requisition'
 })
 export class Requisition extends BaseEntity<RequisitionDTO> {
-
   id: string;
   title: string;
   subtitle: string;

@@ -3,8 +3,14 @@ import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { DialogService } from '@fundamental-ngx/core';
 import { EntityStore, EntityStoreBuilderFactory } from '@fundamental-ngx/store';
-import { Observable, of } from 'rxjs';
-import { Address, Requisition } from 'src/app/store/models';
+import { Observable } from 'rxjs';
+import {
+  Address,
+  CommodityCode,
+  Requisition,
+  Supplier,
+  User
+} from 'src/app/store/models';
 
 @Component({
   selector: 'app-checkout-page',
@@ -15,8 +21,15 @@ export class CheckoutPageComponent implements OnInit {
 
   requisitionStore: EntityStore<Requisition>;
   addressStore: EntityStore<Address>;
+  commodityCodeStore: EntityStore<CommodityCode>;
+  supplierStore: EntityStore<Supplier>;
+  userStore: EntityStore<User>;
+
   requisition$: Observable<Requisition>;
   addresses$: Observable<Address[]>;
+  commodityCodes$: Observable<CommodityCode[]>;
+  suppliers$: Observable<Supplier[]>;
+  users$: Observable<User[]>;
 
   formGroup: FormGroup;
   lineItemFormGroup: FormGroup;
