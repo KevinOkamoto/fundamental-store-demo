@@ -58,6 +58,10 @@ export class CheckoutPageComponent implements OnInit {
     this.addresses$ = this.addressStore.queryBuilder.build().fetch();
   }
 
+  onSubmit(): void {
+    console.log('SUBMIT');
+  }
+
   openLineItemDialog(dialog: TemplateRef<any>, item: any): void {
     const dialogRef = this.dialogService.open(dialog, {
       responsivePadding: true,

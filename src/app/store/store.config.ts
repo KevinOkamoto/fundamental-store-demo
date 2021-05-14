@@ -18,5 +18,5 @@ export const storeConfig: FundamentalStoreConfig = {
     Supplier,
     User
   },
-  enableDevtools: true
+  enableDevtools: false
 };
