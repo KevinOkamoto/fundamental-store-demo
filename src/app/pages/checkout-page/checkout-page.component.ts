@@ -41,6 +41,9 @@ export class CheckoutPageComponent implements OnInit {
   ) {
     this.requisitionStore = builderFactory.create(Requisition).create();
     this.addressStore = builderFactory.create(Address).create();
+    this.commodityCodeStore = builderFactory.create(CommodityCode).create();
+    this.supplierStore = builderFactory.create(Supplier).create();
+    this.userStore = builderFactory.create(User).create();
   }
 
   ngOnInit(): void {
@@ -56,10 +59,13 @@ export class CheckoutPageComponent implements OnInit {
 
   loadResources(): void {
     this.addresses$ = this.addressStore.queryBuilder.build().fetch();
+    this.commodityCodes$ = this.commodityCodeStore.queryBuilder.build().fetch();
+    this.suppliers$ = this.supplierStore.queryBuilder.build().fetch();
+    this.users$ = this.userStore.queryBuilder.build().fetch();
   }
 
-  onSubmit(): void {
-    console.log('SUBMIT');
+  onSubmit(debug: any): void {
+
   }
 
   openLineItemDialog(dialog: TemplateRef<any>, item: any): void {
