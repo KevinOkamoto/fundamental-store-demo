@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { TableDataSource } from '@fundamental-ngx/platform';
 import { EntityStore, EntityStoreBuilderFactory } from '@fundamental-ngx/store';
 import { Observable } from 'rxjs';
 import { Requisition } from 'src/app/store/models';
+import { EntityStoreDataSourceFactoryService } from 'src/app/utils/data-providers';
 
 @Component({
   selector: 'app-main-page',
@@ -11,16 +13,20 @@ import { Requisition } from 'src/app/store/models';
 export class MainPageComponent implements OnInit {
 
   store: EntityStore<Requisition>;
-  requisitions$: Observable<any>;
+  requisitions$: TableDataSource<Requisition>;
 
-  constructor( private builderFactory: EntityStoreBuilderFactory ) {
+
+  constructor(
+    private builderFactory: EntityStoreBuilderFactory,
+    private dataSourceFactory: EntityStoreDataSourceFactoryService
+  ) {
     const builder = builderFactory.create(Requisition);
     this.store = builder.create();
   }
 
   ngOnInit(): void {
     const query = this.store.queryBuilder.build();
-    this.requisitions$ = query.fetch();
+    this.requisitions$ = this.dataSourceFactory.createTableDataSource<Requisition>(this.store);
   }
 
 }

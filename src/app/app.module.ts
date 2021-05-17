@@ -11,6 +11,7 @@ import { FundamentalStoreModule } from '@fundamental-ngx/store';
 
 import { storeConfig } from './store/store.config';
 import { HttpClientModule } from '@angular/common/http';
+import { EntityStoreDataSourceFactoryService } from './utils/data-providers';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     RtlService,
-    DialogService
+    DialogService,
+    EntityStoreDataSourceFactoryService
   ],
   bootstrap: [AppComponent]
 })
