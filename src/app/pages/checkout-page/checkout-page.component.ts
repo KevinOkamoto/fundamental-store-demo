@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { DialogService } from '@fundamental-ngx/core';
@@ -43,7 +43,8 @@ export class CheckoutPageComponent implements OnInit {
     private route: ActivatedRoute,
     private builderFactory: EntityStoreBuilderFactory,
     private dialogService: DialogService,
-    private dataSourceFactory: EntityStoreDataSourceFactoryService
+    private dataSourceFactory: EntityStoreDataSourceFactoryService,
+    private cd: ChangeDetectorRef
   ) {
     this.requisitionStore = builderFactory.create(Requisition).create();
     this.addressStore = builderFactory.create(Address).create();
@@ -60,6 +61,10 @@ export class CheckoutPageComponent implements OnInit {
         .where(eq('requisitionId', params.id))
         .build()
         .fetch();
+
+      this.lineItems$.subscribe(() => {
+        this.cd.detectChanges();
+      });
     });
     this.loadResources();
 
