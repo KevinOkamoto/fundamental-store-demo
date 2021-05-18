@@ -7,11 +7,12 @@ import { DialogService, RtlService, ShellbarModule } from '@fundamental-ngx/core
 import { SharedModule } from './shared.module';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
-import { FundamentalStoreModule } from '@fundamental-ngx/store';
+import { FundamentalStoreModule, QueryAdapterFactory } from '@fundamental-ngx/store';
 
 import { storeConfig } from './store/store.config';
 import { HttpClientModule } from '@angular/common/http';
 import { EntityStoreDataSourceFactoryService } from './utils/data-providers';
+import { CustomQueryAdapterFactory } from './store/query-adapter';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,11 @@ import { EntityStoreDataSourceFactoryService } from './utils/data-providers';
   providers: [
     RtlService,
     DialogService,
-    EntityStoreDataSourceFactoryService
+    EntityStoreDataSourceFactoryService,
+    {
+      provide: QueryAdapterFactory,
+      useClass: CustomQueryAdapterFactory
+    }
   ],
   bootstrap: [AppComponent]
 })
