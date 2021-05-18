@@ -3,11 +3,12 @@ import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { DialogService } from '@fundamental-ngx/core';
 import { DataSource } from '@fundamental-ngx/platform';
-import { EntityStore, EntityStoreBuilderFactory } from '@fundamental-ngx/store';
+import { EntityStore, EntityStoreBuilderFactory, eq } from '@fundamental-ngx/store';
 import { Observable } from 'rxjs';
 import {
   Address,
   CommodityCode,
+  LineItem,
   Requisition,
   Supplier,
   User
@@ -26,12 +27,14 @@ export class CheckoutPageComponent implements OnInit {
   commodityCodeStore: EntityStore<CommodityCode>;
   supplierStore: EntityStore<Supplier>;
   userStore: EntityStore<User>;
+  lineItemStore: EntityStore<LineItem>;
 
   requisition$: Observable<Requisition>;
   addresses$: DataSource<Address>;
   commodityCodes$: DataSource<CommodityCode>;
   suppliers$: DataSource<Supplier>;
   users$: DataSource<User>;
+  lineItems$: Observable<LineItem[]>;
 
   formGroup: FormGroup;
   lineItemFormGroup: FormGroup;
@@ -47,17 +50,21 @@ export class CheckoutPageComponent implements OnInit {
     this.commodityCodeStore = builderFactory.create(CommodityCode).create();
     this.supplierStore = builderFactory.create(Supplier).create();
     this.userStore = builderFactory.create(User).create();
+    this.lineItemStore = builderFactory.create(LineItem).create();
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.requisition$ = this.requisitionStore.get(params.id);
+      this.lineItems$ = this.lineItemStore.queryBuilder
+        .where(eq('requisitionId', params.id))
+        .build()
+        .fetch();
     });
     this.loadResources();
 
     this.formGroup = new FormGroup({});
     this.lineItemFormGroup = new FormGroup({});
-
   }
 
   loadResources(): void {

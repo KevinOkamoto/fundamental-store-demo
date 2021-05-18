@@ -3,6 +3,7 @@ import { FundamentalStoreConfig } from "@fundamental-ngx/store";
 import {
   Address,
   CommodityCode,
+  LineItem,
   Requisition,
   Supplier,
   User
@@ -14,6 +15,7 @@ export const storeConfig: FundamentalStoreConfig = {
   entities: {
     Address,
     CommodityCode,
+    LineItem,
     Requisition,
     Supplier,
     User

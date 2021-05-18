@@ -3880,5 +3880,457 @@
             "email": "sodales@Sedidrisus.ca",
             "personalNumber": "16780418 8204"
         }
+    ],
+    "lineitems": [
+        {
+            "id": "e1481195-a2a1-464e-9987-f43500a66971",
+            "requisitionId": "02b646ef-b422-4633-89dd-8620d667bde6",
+            "lineItemNumber": 1,
+            "name": "Fantastic Wooden Ball",
+            "price": 190,
+            "quantity": 3,
+            "supplier": {
+                "id": "d151d08d-d195-40bc-81e4-390c953aaca1",
+                "name": "Semper PC",
+                "email": "ut.aliquam@massaIntegervitae.net",
+                "orgNumber": "722411 9540"
+            },
+            "totalNetAmount": 570
+        },
+        {
+            "id": "d9cf68c1-c70c-47ca-8127-435a728c9062",
+            "requisitionId": "e01a9d51-a736-4bbb-bb0e-009951670b16",
+            "lineItemNumber": 1,
+            "name": "Tasty Granite Fish",
+            "price": 723,
+            "quantity": 8,
+            "supplier": {
+                "id": "d2980d88-1d2b-49bd-abd7-6d3f64c3cfc3",
+                "name": "Interdum Curabitur Associates",
+                "email": "facilisis.eget@accumsaninterdumlibero.com",
+                "orgNumber": "756210 1324"
+            },
+            "totalNetAmount": 5784
+        },
+        {
+            "id": "3a766412-1eb1-44de-8891-8af68ad8df32",
+            "requisitionId": "e01a9d51-a736-4bbb-bb0e-009951670b16",
+            "lineItemNumber": 2,
+            "name": "Fantastic Cotton Sausages",
+            "price": 921,
+            "quantity": 2,
+            "supplier": {
+                "id": "c83b6d56-d4a5-4c3f-9431-e653f565b4cd",
+                "name": "Nec Foundation",
+                "email": "risus.Duis.a@lacusUtnec.co.uk",
+                "orgNumber": "009690 0063"
+            },
+            "totalNetAmount": 1842
+        },
+        {
+            "id": "9daa8f8f-e0b9-4460-93d8-08db7ee53443",
+            "requisitionId": "c5f9b7eb-3219-4887-9702-a500506ec4b4",
+            "lineItemNumber": 1,
+            "name": "Refined Cotton Gloves",
+            "price": 338,
+            "quantity": 16,
+            "supplier": {
+                "id": "9097dab2-8dc6-4a6b-a3bd-95dda7f64936",
+                "name": "Vivamus Rhoncus Inc.",
+                "email": "a.mi.fringilla@quis.net",
+                "orgNumber": "156208 4978"
+            },
+            "totalNetAmount": 5408
+        },
+        {
+            "id": "b1e24573-2d7a-4afc-84a9-ba55f47fd189",
+            "requisitionId": "02b646ef-b422-4633-89dd-8620d667bde6",
+            "lineItemNumber": 2,
+            "name": "Unbranded Frozen Salad",
+            "price": 129,
+            "quantity": 5,
+            "supplier": {
+                "id": "d56e3e1a-27ff-4439-a3e8-cc0a5eb580b9",
+                "name": "A Felis Industries",
+                "email": "Aliquam.erat.volutpat@tinciduntadipiscing.net",
+                "orgNumber": "576832 7149"
+            },
+            "totalNetAmount": 645
+        },
+        {
+            "id": "44309033-266e-47a7-9381-0351afaf59ef",
+            "requisitionId": "e01a9d51-a736-4bbb-bb0e-009951670b16",
+            "lineItemNumber": 3,
+            "name": "Rustic Cotton Pants",
+            "price": 17,
+            "quantity": 19,
+            "supplier": {
+                "id": "85f0b580-9e80-43b0-98b0-b192679027b4",
+                "name": "Vehicula Pellentesque Corp.",
+                "email": "nec.tempus.mauris@sedsem.edu",
+                "orgNumber": "558670 8025"
+            },
+            "totalNetAmount": 323
+        },
+        {
+            "id": "d4cd5a9a-343f-4e1e-91dc-7a95608b8027",
+            "requisitionId": "02b646ef-b422-4633-89dd-8620d667bde6",
+            "lineItemNumber": 3,
+            "name": "Licensed Steel Towels",
+            "price": 599,
+            "quantity": 1,
+            "supplier": {
+                "id": "764fb9b3-0932-4dbd-b332-f48fdb34e22a",
+                "name": "Tempus LLC",
+                "email": "malesuada.augue.ut@turpisnon.com",
+                "orgNumber": "015308 6905"
+            },
+            "totalNetAmount": 599
+        },
+        {
+            "id": "833d28a7-a998-476c-9a30-1555431e2961",
+            "requisitionId": "0782005d-0c3c-4089-89f2-bfca4f445c23",
+            "lineItemNumber": 1,
+            "name": "Sleek Rubber Gloves",
+            "price": 203,
+            "quantity": 13,
+            "supplier": {
+                "id": "36c80f21-9a12-4b98-b31c-d2fc3b44c591",
+                "name": "Tincidunt Foundation",
+                "email": "viverra.Maecenas@pharetrased.ca",
+                "orgNumber": "084026 6639"
+            },
+            "totalNetAmount": 2639
+        },
+        {
+            "id": "36054d60-7b81-4cf9-8268-5a9335e4f0b5",
+            "requisitionId": "02b646ef-b422-4633-89dd-8620d667bde6",
+            "lineItemNumber": 4,
+            "name": "Practical Frozen Pants",
+            "price": 877,
+            "quantity": 17,
+            "supplier": {
+                "id": "1e89ed0f-2090-4d70-bf7e-d979a1fe310d",
+                "name": "Tincidunt Nunc Ac LLP",
+                "email": "neque@Duisac.co.uk",
+                "orgNumber": "939894 3812"
+            },
+            "totalNetAmount": 14909
+        },
+        {
+            "id": "237f7302-7427-4ea3-966e-d44d0d7242bf",
+            "requisitionId": "e01a9d51-a736-4bbb-bb0e-009951670b16",
+            "lineItemNumber": 4,
+            "name": "Licensed Fresh Salad",
+            "price": 775,
+            "quantity": 14,
+            "supplier": {
+                "id": "bd4641dc-c62b-4e4a-b590-05e9b2840226",
+                "name": "Tempus Eu Ligula LLC",
+                "email": "Mauris.molestie@magnanec.org",
+                "orgNumber": "734340 9632"
+            },
+            "totalNetAmount": 10850
+        },
+        {
+            "id": "f639239f-3a48-4eec-9c12-de14426c4dfc",
+            "requisitionId": "02b646ef-b422-4633-89dd-8620d667bde6",
+            "lineItemNumber": 5,
+            "name": "Intelligent Plastic Gloves",
+            "price": 800,
+            "quantity": 14,
+            "supplier": {
+                "id": "187b9f73-bd0d-48ac-9462-08a8fdedfee7",
+                "name": "Non Vestibulum Corp.",
+                "email": "non@vel.edu",
+                "orgNumber": "322300 7307"
+            },
+            "totalNetAmount": 11200
+        },
+        {
+            "id": "b6c2e3c4-d0cf-44ac-a3e3-2cf720249e29",
+            "requisitionId": "c2e4cf35-ca46-462f-81e6-5232a34d6333",
+            "lineItemNumber": 1,
+            "name": "Handcrafted Cotton Tuna",
+            "price": 619,
+            "quantity": 6,
+            "supplier": {
+                "id": "1e89ed0f-2090-4d70-bf7e-d979a1fe310d",
+                "name": "Tincidunt Nunc Ac LLP",
+                "email": "neque@Duisac.co.uk",
+                "orgNumber": "939894 3812"
+            },
+            "totalNetAmount": 3714
+        },
+        {
+            "id": "86f5d4d0-a06d-4a16-b395-e90df92c3871",
+            "requisitionId": "c5f9b7eb-3219-4887-9702-a500506ec4b4",
+            "lineItemNumber": 2,
+            "name": "Small Soft Chair",
+            "price": 802,
+            "quantity": 16,
+            "supplier": {
+                "id": "2d320944-65eb-4eb5-a93f-88fbb54d996f",
+                "name": "Vivamus Molestie Dapibus PC",
+                "email": "malesuada.Integer.id@fringillami.com",
+                "orgNumber": "448561 7726"
+            },
+            "totalNetAmount": 12832
+        },
+        {
+            "id": "fb9c7096-d825-4ded-940d-d12fd87f49a2",
+            "requisitionId": "c2e4cf35-ca46-462f-81e6-5232a34d6333",
+            "lineItemNumber": 2,
+            "name": "Practical Frozen Pants",
+            "price": 877,
+            "quantity": 20,
+            "supplier": {
+                "id": "476b3497-3b8f-4cc4-bf4f-507d67474ce6",
+                "name": "Ultricies Ornare Elit Corporation",
+                "email": "rhoncus.Nullam@afacilisisnon.org",
+                "orgNumber": "942813 4069"
+            },
+            "totalNetAmount": 17540
+        },
+        {
+            "id": "acfc3ed6-adc2-4072-9b2a-6ed9647c7a0d",
+            "requisitionId": "c5f9b7eb-3219-4887-9702-a500506ec4b4",
+            "lineItemNumber": 3,
+            "name": "Rustic Steel Tuna",
+            "price": 38,
+            "quantity": 12,
+            "supplier": {
+                "id": "424ea6eb-4f01-4511-b8bd-2e83b76b0e87",
+                "name": "Sed Inc.",
+                "email": "elementum@Proinmi.com",
+                "orgNumber": "592804 0046"
+            },
+            "totalNetAmount": 456
+        },
+        {
+            "id": "ea8ce2cf-ec80-4cbe-b3f3-c0bbfefd2e04",
+            "requisitionId": "02b646ef-b422-4633-89dd-8620d667bde6",
+            "lineItemNumber": 6,
+            "name": "Handcrafted Concrete Shirt",
+            "price": 256,
+            "quantity": 16,
+            "supplier": {
+                "id": "44ba72b4-040c-4b54-99e3-d1c1289eb012",
+                "name": "Eu Arcu Morbi Limited",
+                "email": "Nulla.tincidunt.neque@tortorat.co.uk",
+                "orgNumber": "502620 9048"
+            },
+            "totalNetAmount": 4096
+        },
+        {
+            "id": "762a3f4b-f13b-4b95-84aa-1b0b4c052cec",
+            "requisitionId": "c2e4cf35-ca46-462f-81e6-5232a34d6333",
+            "lineItemNumber": 3,
+            "name": "Fantastic Frozen Sausages",
+            "price": 565,
+            "quantity": 19,
+            "supplier": {
+                "id": "c12ac639-2eca-4683-a077-bf5612698642",
+                "name": "Tortor Nunc LLC",
+                "email": "tellus.non.magna@Maecenas.co.uk",
+                "orgNumber": "785198 5429"
+            },
+            "totalNetAmount": 10735
+        },
+        {
+            "id": "94e1de31-1d0e-4e64-95e8-d9a455d1e413",
+            "requisitionId": "0782005d-0c3c-4089-89f2-bfca4f445c23",
+            "lineItemNumber": 2,
+            "name": "Sleek Rubber Towels",
+            "price": 659,
+            "quantity": 10,
+            "supplier": {
+                "id": "cc015763-3893-4797-9041-2ee3c644ff06",
+                "name": "Neque PC",
+                "email": "orci.luctus.et@elementum.co.uk",
+                "orgNumber": "569719 0691"
+            },
+            "totalNetAmount": 6590
+        },
+        {
+            "id": "6a1c98d6-5f84-4827-9059-f2291ace917f",
+            "requisitionId": "02b646ef-b422-4633-89dd-8620d667bde6",
+            "lineItemNumber": 7,
+            "name": "Licensed Frozen Tuna",
+            "price": 828,
+            "quantity": 9,
+            "supplier": {
+                "id": "710368a5-98cf-4c83-b73a-dcbfef9bd6e9",
+                "name": "Commodo Ipsum Ltd",
+                "email": "Nam.tempor@quispedeSuspendisse.ca",
+                "orgNumber": "329526 8852"
+            },
+            "totalNetAmount": 7452
+        },
+        {
+            "id": "3ee215d3-a763-46b2-99a9-123f09106fe9",
+            "requisitionId": "0782005d-0c3c-4089-89f2-bfca4f445c23",
+            "lineItemNumber": 3,
+            "name": "Practical Cotton Cheese",
+            "price": 273,
+            "quantity": 7,
+            "supplier": {
+                "id": "7e41c2c3-6a07-4d91-93e5-2be7321ab988",
+                "name": "Fusce Diam Nunc LLC",
+                "email": "Aliquam@consequatlectussit.ca",
+                "orgNumber": "087068 9247"
+            },
+            "totalNetAmount": 1911
+        },
+        {
+            "id": "889addb3-ddfd-4ec3-8bd8-15bd100177d2",
+            "requisitionId": "0782005d-0c3c-4089-89f2-bfca4f445c23",
+            "lineItemNumber": 4,
+            "name": "Licensed Rubber Keyboard",
+            "price": 348,
+            "quantity": 1,
+            "supplier": {
+                "id": "6a9f7347-4a16-441c-811b-14639fabd84d",
+                "name": "Molestie Arcu Consulting",
+                "email": "dolor@at.ca",
+                "orgNumber": "493275 1490"
+            },
+            "totalNetAmount": 348
+        },
+        {
+            "id": "f41d59d0-9b74-464e-bdca-35147c64abac",
+            "requisitionId": "e01a9d51-a736-4bbb-bb0e-009951670b16",
+            "lineItemNumber": 5,
+            "name": "Sleek Rubber Tuna",
+            "price": 239,
+            "quantity": 19,
+            "supplier": {
+                "id": "95c8122b-fcc4-4502-8e68-27eeeffe982b",
+                "name": "Ullamcorper Nisl Corp.",
+                "email": "Cum.sociis@euodioPhasellus.net",
+                "orgNumber": "403719 1055"
+            },
+            "totalNetAmount": 4541
+        },
+        {
+            "id": "602a5400-db57-4a50-86e3-8d56dcef3aa0",
+            "requisitionId": "c5f9b7eb-3219-4887-9702-a500506ec4b4",
+            "lineItemNumber": 4,
+            "name": "Handcrafted Wooden Pants",
+            "price": 926,
+            "quantity": 5,
+            "supplier": {
+                "id": "424ea6eb-4f01-4511-b8bd-2e83b76b0e87",
+                "name": "Sed Inc.",
+                "email": "elementum@Proinmi.com",
+                "orgNumber": "592804 0046"
+            },
+            "totalNetAmount": 4630
+        },
+        {
+            "id": "1d6d10c5-f541-40b8-a7dc-8008e3f56039",
+            "requisitionId": "c5f9b7eb-3219-4887-9702-a500506ec4b4",
+            "lineItemNumber": 5,
+            "name": "Rustic Wooden Sausages",
+            "price": 17,
+            "quantity": 12,
+            "supplier": {
+                "id": "4ee22125-e97f-4497-812a-144299b93d37",
+                "name": "Feugiat Sed Corp.",
+                "email": "enim@neque.ca",
+                "orgNumber": "182176 8072"
+            },
+            "totalNetAmount": 204
+        },
+        {
+            "id": "a105f954-c52d-46a2-a20d-2461e3ff26c4",
+            "requisitionId": "c5f9b7eb-3219-4887-9702-a500506ec4b4",
+            "lineItemNumber": 6,
+            "name": "Refined Wooden Table",
+            "price": 769,
+            "quantity": 12,
+            "supplier": {
+                "id": "578a7f64-ce6c-4d22-98e0-bb578828b7b1",
+                "name": "Convallis Ante Inc.",
+                "email": "eros.Nam@disparturient.edu",
+                "orgNumber": "808232 0634"
+            },
+            "totalNetAmount": 9228
+        },
+        {
+            "id": "ff0caf5f-6dbc-40ad-a33d-ad56c1b634b1",
+            "requisitionId": "e01a9d51-a736-4bbb-bb0e-009951670b16",
+            "lineItemNumber": 6,
+            "name": "Intelligent Plastic Shoes",
+            "price": 105,
+            "quantity": 5,
+            "supplier": {
+                "id": "62d8c2ad-7279-4e3c-98f5-672be8a28778",
+                "name": "Odio Incorporated",
+                "email": "rhoncus.Proin.nisl@congue.co.uk",
+                "orgNumber": "722302 6605"
+            },
+            "totalNetAmount": 525
+        },
+        {
+            "id": "c84623c9-067a-4c92-95c1-640fcbccb687",
+            "requisitionId": "0782005d-0c3c-4089-89f2-bfca4f445c23",
+            "lineItemNumber": 5,
+            "name": "Intelligent Frozen Pants",
+            "price": 24,
+            "quantity": 15,
+            "supplier": {
+                "id": "79b77d9b-d9cd-4405-a9a6-63e31972417b",
+                "name": "Morbi Non Industries",
+                "email": "laoreet.lectus.quis@lacuspedesagittis.ca",
+                "orgNumber": "299211 5275"
+            },
+            "totalNetAmount": 360
+        },
+        {
+            "id": "1f0e38db-4eb4-4e45-99dc-1d687f03d267",
+            "requisitionId": "c5f9b7eb-3219-4887-9702-a500506ec4b4",
+            "lineItemNumber": 7,
+            "name": "Licensed Plastic Table",
+            "price": 664,
+            "quantity": 18,
+            "supplier": {
+                "id": "371391ef-7feb-4fd8-b77b-87c6d2b8bc96",
+                "name": "Lorem Eu LLP",
+                "email": "cursus@a.net",
+                "orgNumber": "439832 3222"
+            },
+            "totalNetAmount": 11952
+        },
+        {
+            "id": "52d1f532-83e3-4d15-a0f6-3d9086353ee3",
+            "requisitionId": "02b646ef-b422-4633-89dd-8620d667bde6",
+            "lineItemNumber": 8,
+            "name": "Licensed Plastic Table",
+            "price": 664,
+            "quantity": 12,
+            "supplier": {
+                "id": "0e51b2e8-5c20-4e33-ade2-003e16520b73",
+                "name": "Feugiat Consulting",
+                "email": "porta.elit.a@Inmi.edu",
+                "orgNumber": "753381 9384"
+            },
+            "totalNetAmount": 7968
+        },
+        {
+            "id": "7f3cb96a-a766-4258-b2b5-cf704f7e5419",
+            "requisitionId": "c5f9b7eb-3219-4887-9702-a500506ec4b4",
+            "lineItemNumber": 8,
+            "name": "Fantastic Soft Bacon",
+            "price": 607,
+            "quantity": 7,
+            "supplier": {
+                "id": "578a7f64-ce6c-4d22-98e0-bb578828b7b1",
+                "name": "Convallis Ante Inc.",
+                "email": "eros.Nam@disparturient.edu",
+                "orgNumber": "808232 0634"
+            },
+            "totalNetAmount": 4249
+        }
     ]
 }
