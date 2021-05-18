@@ -12,13 +12,16 @@ import {
   OrPredicate,
   Predicate,
   OrderBy,
-  QuerySnapshot
+  QuerySnapshot,
+  ContainsPredicate
 } from '@fundamental-ngx/store';
 
 export class CustomQueryAdapter<T> extends QueryAdapter<T> {
   parsePredicate(predicate?: Predicate<T>): string {
       if (predicate instanceof EqPredicate) {
           return predicate.property + '=' + this._prepareValue(predicate.value);
+      } else if (predicate instanceof ContainsPredicate) {
+          return predicate.property + '_like=' + this._prepareValue(predicate.value);
       } else if (predicate instanceof GePredicate) {
           return predicate.property + '_gte=' + this._prepareValue(predicate.value);
       } else if (predicate instanceof GtPredicate) {

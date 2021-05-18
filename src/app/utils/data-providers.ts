@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CollectionFilter, ComboBoxDataSource, DataProvider, SortDirection, TableDataProvider, TableDataSource, TableState } from '@fundamental-ngx/platform';
-import { AndPredicate, BaseEntity, BasePredicate, EntityStore, EqPredicate, OrderBy, Predicate, Query } from '@fundamental-ngx/store';
+import { AndPredicate, BaseEntity, BasePredicate, ContainsPredicate, EntityStore, EqPredicate, OrderBy, Predicate, Query } from '@fundamental-ngx/store';
 
 import { Observable, of } from 'rxjs';
 
@@ -25,8 +25,15 @@ export class EntityStoreTableDataProvider<T extends BaseEntity> extends TableDat
   }
 
   static filterToPredicate<T>(filter: CollectionFilter): Predicate<T> {
-    if (filter.strategy === 'equalTo') {
-      return new EqPredicate((filter.field as keyof T), filter.value);
+    const field = filter.field as keyof T;
+    const value = filter.value as T[keyof T];
+    switch (filter.strategy) {
+      case 'equalTo':
+        return new EqPredicate(field, value);
+      case 'contains':
+        return new ContainsPredicate(field, value, false);
+      default:
+        return new BasePredicate();
     }
 
   }

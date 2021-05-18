@@ -10,16 +10,16 @@
       </fdp-table-cell>
     </fdp-column>
 
-    <fdp-column name="requestor" key="requestor.name" [sortable]="true" label="Requestor" i18n-label>
+    <fdp-column name="requestor" key="requestor.name" [sortable]="true" [filterable]="true" label="Requestor" i18n-label>
     </fdp-column>
 
-    <fdp-column name="supplier" key="supplier.name"  [sortable]="true" label="Supplier" role="" i18n-label>
+    <fdp-column name="supplier" key="supplier.name"  [sortable]="true" [filterable]="true" label="Supplier" role="" i18n-label>
       <fdp-table-cell tabindex="0" role="" *fdpCellDef="let item">
         {{item.supplier.name}}
       </fdp-table-cell>
     </fdp-column>
 
-    <fdp-column name="commodity" key="commodityCode.name" [sortable]="true" label="Commodity" i18n-label>
+    <fdp-column name="commodity" key="commodityCode.name" [sortable]="true" [filterable]="true" label="Commodity" i18n-label>
     </fdp-column>
 
   </fdp-table>
