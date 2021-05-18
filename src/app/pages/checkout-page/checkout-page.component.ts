@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { DialogService } from '@fundamental-ngx/core';
+import { DataSource } from '@fundamental-ngx/platform';
 import { EntityStore, EntityStoreBuilderFactory } from '@fundamental-ngx/store';
 import { Observable } from 'rxjs';
 import {
@@ -11,6 +12,7 @@ import {
   Supplier,
   User
 } from 'src/app/store/models';
+import { EntityStoreDataSourceFactoryService } from 'src/app/utils/data-providers';
 
 @Component({
   selector: 'app-checkout-page',
@@ -26,10 +28,10 @@ export class CheckoutPageComponent implements OnInit {
   userStore: EntityStore<User>;
 
   requisition$: Observable<Requisition>;
-  addresses$: Observable<Address[]>;
-  commodityCodes$: Observable<CommodityCode[]>;
-  suppliers$: Observable<Supplier[]>;
-  users$: Observable<User[]>;
+  addresses$: DataSource<Address>;
+  commodityCodes$: DataSource<CommodityCode>;
+  suppliers$: DataSource<Supplier>;
+  users$: DataSource<User>;
 
   formGroup: FormGroup;
   lineItemFormGroup: FormGroup;
@@ -37,7 +39,8 @@ export class CheckoutPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private builderFactory: EntityStoreBuilderFactory,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private dataSourceFactory: EntityStoreDataSourceFactoryService
   ) {
     this.requisitionStore = builderFactory.create(Requisition).create();
     this.addressStore = builderFactory.create(Address).create();
@@ -58,10 +61,10 @@ export class CheckoutPageComponent implements OnInit {
   }
 
   loadResources(): void {
-    this.addresses$ = this.addressStore.queryBuilder.build().fetch();
-    this.commodityCodes$ = this.commodityCodeStore.queryBuilder.build().fetch();
-    this.suppliers$ = this.supplierStore.queryBuilder.build().fetch();
-    this.users$ = this.userStore.queryBuilder.build().fetch();
+    this.addresses$ = this.dataSourceFactory.createComboBoxDataSource<Address>(this.addressStore, 'address');
+    this.commodityCodes$ = this.dataSourceFactory.createComboBoxDataSource<CommodityCode>(this.commodityCodeStore, 'name');
+    this.suppliers$ = this.dataSourceFactory.createComboBoxDataSource<Supplier>(this.supplierStore, 'name');
+    this.users$ = this.dataSourceFactory.createComboBoxDataSource<User>(this.userStore, 'name');
   }
 
   onSubmit(debug: any): void {

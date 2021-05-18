@@ -6,12 +6,15 @@ import { Observable, of } from 'rxjs';
 
 export class EntityStoreDataProvider<T extends BaseEntity> extends DataProvider<T> {
 
-  constructor(private store: EntityStore<T>) {
+  constructor(private store: EntityStore<T>, private field: keyof T) {
     super();
   }
 
   fetch(params: Map<string, any>): Observable<T[]> {
-    let predicate: Predicate<T>;
+    if (params.has('query') && params.get('query') !== '*') {
+      const predicate: Predicate<T> = new ContainsPredicate(this.field as keyof T, params.get('query') as T[keyof T], false);
+      return this.store.queryBuilder.where(predicate).build().fetch();
+    }
     return this.store.queryBuilder.build().fetch();
   }
 }
@@ -83,12 +86,12 @@ export class EntityStoreTableDataProvider<T extends BaseEntity> extends TableDat
 
 @Injectable()
 export class EntityStoreDataSourceFactoryService {
-  create<T extends BaseEntity>(store: EntityStore<T>): EntityStoreDataProvider<T> {
-    return new EntityStoreDataProvider(store);
+  create<T extends BaseEntity>(store: EntityStore<T>, field: keyof T): EntityStoreDataProvider<T> {
+    return new EntityStoreDataProvider(store, field);
   }
 
-  createComboBoxDataSource<T extends BaseEntity>(store: EntityStore<T>): ComboBoxDataSource<T> {
-    const provider: DataProvider<T> = this.create(store);
+  createComboBoxDataSource<T extends BaseEntity>(store: EntityStore<T>, field: keyof T): ComboBoxDataSource<T> {
+    const provider: DataProvider<T> = this.create(store, field);
     return new ComboBoxDataSource(provider);
   }
 

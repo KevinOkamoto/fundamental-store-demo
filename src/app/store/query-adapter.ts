@@ -16,6 +16,10 @@ import {
   ContainsPredicate
 } from '@fundamental-ngx/store';
 
+/**
+ * QueryAdapter for json-server integration.
+ * https://www.npmjs.com/package/json-server
+ */
 export class CustomQueryAdapter<T> extends QueryAdapter<T> {
   parsePredicate(predicate?: Predicate<T>): string {
       if (predicate instanceof EqPredicate) {
