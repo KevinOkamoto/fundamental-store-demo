@@ -137,7 +137,7 @@ export class CustomQueryAdapter<T> extends QueryAdapter<T> {
               if (key === 'filter') {
                   parts.push((params[key] as string));
               } else if (key === 'search') {
-                  parts.push('$search=' + params[key]);
+                  parts.push('q=' + params[key]);
               } else if (key === 'select') {
                   parts.push('$select=' + params[key]);
               } else if (key === 'expand') {

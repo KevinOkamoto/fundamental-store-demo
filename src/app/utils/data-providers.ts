@@ -74,6 +74,9 @@ export class EntityStoreTableDataProvider<T extends BaseEntity> extends TableDat
     if (orderBys.length > 0) {
       query = query.orderBy(...orderBys);
     }
+    if (state.searchInput && state.searchInput.text) {
+      query = query.keyword(state.searchInput.text);
+    }
     return query.fetch();
   }
 }
