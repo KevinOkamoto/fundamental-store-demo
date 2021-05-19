@@ -38,7 +38,7 @@ export class CustomQueryAdapter<T> extends QueryAdapter<T> {
           const operands = predicate.operands.map((op) => {
               return this.parsePredicate(op);
           });
-          return '(' + operands.join(' and ') + ')';
+          return operands.join('&');
       } else if (predicate instanceof OrPredicate) {
           const operands = predicate.operands.map((op) => {
               return this.parsePredicate(op);
