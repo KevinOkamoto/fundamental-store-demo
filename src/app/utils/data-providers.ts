@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { CollectionFilter, ComboBoxDataSource, DataProvider, SortDirection, TableDataProvider, TableDataSource, TableState } from '@fundamental-ngx/platform';
 import { AndPredicate, BaseEntity, BasePredicate, ContainsPredicate, EntityStore, EqPredicate, OrderBy, Predicate, Query } from '@fundamental-ngx/store';
 
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export class EntityStoreDataProvider<T extends BaseEntity> extends DataProvider<T> {
 
@@ -10,12 +11,17 @@ export class EntityStoreDataProvider<T extends BaseEntity> extends DataProvider<
     super();
   }
 
-  fetch(params: Map<string, any>): Observable<T[]> {
+  fetch(params: Map<string, any>): Observable<any[]> {
+    let query: Query<T>;
     if (params.has('query') && params.get('query') !== '*') {
       const predicate: Predicate<T> = new ContainsPredicate(this.field as keyof T, params.get('query') as T[keyof T], false);
-      return this.store.queryBuilder.where(predicate).build().fetch();
+      query = this.store.queryBuilder.where(predicate).build();
+    } else {
+      query = this.store.queryBuilder.build();
     }
-    return this.store.queryBuilder.build().fetch();
+    return query.fetch().pipe(
+      map(entities => entities.map(entity => entity.value))
+    );
   }
 }
 

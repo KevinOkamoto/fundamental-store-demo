@@ -1,7 +1,8 @@
+import { ThrowStmt } from '@angular/compiler';
 import { ChangeDetectorRef, Component, OnInit, TemplateRef } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { DialogService } from '@fundamental-ngx/core';
+import { DialogService, FormControlComponent } from '@fundamental-ngx/core';
 import { DataSource } from '@fundamental-ngx/platform';
 import { EntityStore, EntityStoreBuilderFactory, eq } from '@fundamental-ngx/store';
 import { Observable } from 'rxjs';
@@ -21,6 +22,8 @@ import { EntityStoreDataSourceFactoryService } from 'src/app/utils/data-provider
   styleUrls: ['./checkout-page.component.scss']
 })
 export class CheckoutPageComponent implements OnInit {
+
+  requisition: Requisition;
 
   requisitionStore: EntityStore<Requisition>;
   addressStore: EntityStore<Address>;
@@ -65,10 +68,22 @@ export class CheckoutPageComponent implements OnInit {
       this.lineItems$.subscribe(() => {
         this.cd.detectChanges();
       });
+      this.loadForm();
     });
     this.loadResources();
 
-    this.formGroup = new FormGroup({});
+    this.formGroup = new FormGroup({
+      id: new FormControl(),
+      title: new FormControl(),
+      subtitle: new FormControl(),
+      shippingAddress: new FormControl(),
+      billingAddress: new FormControl(),
+      supplier: new FormControl(),
+      dueOn: new FormControl(),
+      currency: new FormControl(),
+      requestor: new FormControl(),
+      commodityCode: new FormControl(),
+    });
     this.lineItemFormGroup = new FormGroup({});
   }
 
@@ -79,8 +94,16 @@ export class CheckoutPageComponent implements OnInit {
     this.users$ = this.dataSourceFactory.createComboBoxDataSource<User>(this.userStore, 'name');
   }
 
-  onSubmit(debug: any): void {
+  loadForm(): void {
+    this.requisition$.subscribe(requisition => {
+      this.requisition = requisition;
+      this.formGroup.setValue(requisition.value);
+    });
+  }
 
+  onSubmit(): void {
+    const value = this.getFormValue(this.formGroup);
+    this.requisitionStore.save(value);
   }
 
   openLineItemDialog(dialog: TemplateRef<any>, item: any): void {
@@ -92,4 +115,10 @@ export class CheckoutPageComponent implements OnInit {
     });
   }
 
+  getFormValue(formGroup: FormGroup): Requisition {
+    return {
+      identity: () => this.formGroup.value.id,
+      ...formGroup.value
+    };
+  }
 }
