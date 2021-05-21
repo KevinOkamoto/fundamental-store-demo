@@ -86,6 +86,10 @@ export class EntityStoreTableDataProvider<T extends BaseEntity> extends TableDat
     if (state.searchInput && state.searchInput.text) {
       query = query.keyword(state.searchInput.text);
     }
+    if (state.page && state.page.pageSize) {
+      query.withMaxResults(state.page.pageSize);
+      query.withFirstResult(state.page.currentPage);
+    }
     return query.fetch();
   }
 }

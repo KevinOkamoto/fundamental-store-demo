@@ -147,9 +147,10 @@ export class CustomQueryAdapter<T> extends QueryAdapter<T> {
               } else if (key === 'expand') {
                   parts.push('$expand=' + params[key]);
               } else if (key === 'skip') {
-                  parts.push('$skip=' + params[key]);
+                  const page = Math.ceil(parseInt(params[key] as string, 10) / parseInt(params.top as string, 10));
+                  parts.push('_page=' + page);
               } else if (key === 'top') {
-                  parts.push('$top=' + params[key]);
+                  parts.push('_limit=' + params[key]);
               } else if (key === 'orderby') {
                   parts.push(params[key] as string);
               } else if (key === 'count') {

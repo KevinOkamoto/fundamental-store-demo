@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TableDataSource } from '@fundamental-ngx/platform';
-import { EntityStore, EntityStoreBuilderFactory } from '@fundamental-ngx/store';
+import { and, contains, EntityStore, EntityStoreBuilderFactory, le, lt, Query } from '@fundamental-ngx/store';
 import { Observable } from 'rxjs';
 import { Requisition } from 'src/app/store/models';
 import { EntityStoreDataSourceFactoryService } from 'src/app/utils/data-providers';
@@ -13,8 +13,8 @@ import { EntityStoreDataSourceFactoryService } from 'src/app/utils/data-provider
 export class MainPageComponent implements OnInit {
 
   store: EntityStore<Requisition>;
-  requisitions$: TableDataSource<Requisition>;
-
+  requisitions$: Observable<Requisition[]>;
+  dataSource$: TableDataSource<Requisition>;
 
   constructor(
     private builderFactory: EntityStoreBuilderFactory,
@@ -25,8 +25,31 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const query = this.store.queryBuilder.build();
-    this.requisitions$ = this.dataSourceFactory.createTableDataSource<Requisition>(this.store);
+    this.dataSource$ = this.dataSourceFactory.createTableDataSource<Requisition>(this.store);
+
+    /*
+    const dueOnDate = new Date('05/24/2021').toISOString();
+    // build query with filters
+    const query: Query<Requisition> = this.store.queryBuilder
+      .where(
+        and(
+          // contains('title', 'group'),
+          le('dueOn', dueOnDate)
+        )
+      )
+      .build();
+
+    // add sorting and paging
+    query.orderBy({
+      field: 'title',
+      order: 'ASCENDING'
+    })
+    .withFirstResult(1)
+    .withMaxResults(10);
+
+    // fetch data
+    this.requisitions$ = query.fetch();
+    */
   }
 
 }

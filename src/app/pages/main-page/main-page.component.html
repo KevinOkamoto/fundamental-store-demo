@@ -1,5 +1,6 @@
 <div style="padding: 1rem;">
-  <fdp-table [dataSource]="requisitions$" role="" emptyTableMessage="No data found" i18n-emptyTableMessage>
+  <fdp-table [dataSource]="dataSource$"
+    emptyTableMessage="No data found" i18n-emptyTableMessage>
 
     <fdp-table-toolbar title="Requisitions" i18n-title [hideItemCount]="false">
     </fdp-table-toolbar>
@@ -20,6 +21,12 @@
     </fdp-column>
 
     <fdp-column name="commodity" key="commodityCode.name" [sortable]="true" [filterable]="true" label="Commodity" i18n-label>
+    </fdp-column>
+
+    <fdp-column name="dueOn" key="dueOn" [sortable]="true" [filterable]="true" label="Due On" i18n-label>
+      <fdp-table-cell tabindex="0" role="" *fdpCellDef="let item">
+        {{item.dueOn | date }}
+      </fdp-table-cell>
     </fdp-column>
 
   </fdp-table>
