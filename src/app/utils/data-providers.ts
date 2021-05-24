@@ -1,6 +1,18 @@
 import { Injectable } from '@angular/core';
 import { CollectionFilter, ComboBoxDataSource, DataProvider, SortDirection, TableDataProvider, TableDataSource, TableState } from '@fundamental-ngx/platform';
-import { AndPredicate, BaseEntity, BasePredicate, ContainsPredicate, EntityStore, EqPredicate, OrderBy, Predicate, Query } from '@fundamental-ngx/store';
+import {
+  AndPredicate,
+  BaseEntity,
+  BasePredicate,
+  ContainsPredicate,
+  EntityStore,
+  EntityStoreBuilderFactory,
+  EntityType,
+  EqPredicate,
+  OrderBy,
+  Predicate,
+  Query
+} from '@fundamental-ngx/store';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -90,17 +102,25 @@ export class EntityStoreTableDataProvider<T extends BaseEntity> extends TableDat
       query.withMaxResults(state.page.pageSize);
       query.withFirstResult(state.page.currentPage);
     }
-    return query.fetch();
+    const result$ = query.fetch();
+    result$.subscribe(data => {
+      this.totalItems = data.length;
+    });
+    return result$;
   }
 }
 
 @Injectable()
 export class EntityStoreDataSourceFactoryService {
+
+  constructor(private builderFactory: EntityStoreBuilderFactory) { }
+
   create<T extends BaseEntity>(store: EntityStore<T>, field: keyof T): EntityStoreDataProvider<T> {
     return new EntityStoreDataProvider(store, field);
   }
 
-  createComboBoxDataSource<T extends BaseEntity>(store: EntityStore<T>, field: keyof T): ComboBoxDataSource<T> {
+  createComboBoxDataSource<T extends BaseEntity>(entity: EntityType<T>, field: keyof T): ComboBoxDataSource<T> {
+    const store = this.builderFactory.create(entity).create();
     const provider: DataProvider<T> = this.create(store, field);
     return new ComboBoxDataSource(provider);
   }

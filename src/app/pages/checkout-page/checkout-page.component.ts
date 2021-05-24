@@ -49,10 +49,6 @@ export class CheckoutPageComponent implements OnInit {
     private cd: ChangeDetectorRef
   ) {
     this.requisitionStore = builderFactory.create(Requisition).create();
-    this.addressStore = builderFactory.create(Address).create();
-    this.commodityCodeStore = builderFactory.create(CommodityCode).create();
-    this.supplierStore = builderFactory.create(Supplier).create();
-    this.userStore = builderFactory.create(User).create();
     this.lineItemStore = builderFactory.create(LineItem).create();
   }
 
@@ -87,10 +83,10 @@ export class CheckoutPageComponent implements OnInit {
   }
 
   loadResources(): void {
-    this.addresses$ = this.dataSourceFactory.createComboBoxDataSource<Address>(this.addressStore, 'address');
-    this.commodityCodes$ = this.dataSourceFactory.createComboBoxDataSource<CommodityCode>(this.commodityCodeStore, 'name');
-    this.suppliers$ = this.dataSourceFactory.createComboBoxDataSource<Supplier>(this.supplierStore, 'name');
-    this.users$ = this.dataSourceFactory.createComboBoxDataSource<User>(this.userStore, 'name');
+    this.addresses$ = this.dataSourceFactory.createComboBoxDataSource<Address>(Address, 'address');
+    this.commodityCodes$ = this.dataSourceFactory.createComboBoxDataSource<CommodityCode>(CommodityCode, 'name');
+    this.suppliers$ = this.dataSourceFactory.createComboBoxDataSource<Supplier>(Supplier, 'name');
+    this.users$ = this.dataSourceFactory.createComboBoxDataSource<User>(User, 'name');
   }
 
   loadForm(): void {
