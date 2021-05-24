@@ -25,33 +25,34 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    /*
     const dueOnDate = new Date('05/24/2021').toISOString();
     // build query with filters
     const query: Query<Requisition> = this.store.queryBuilder
-      // .where(
-      //   and(
-      //     contains('title', 'group'),
-      //     le('dueOn', dueOnDate)
-      //   )
-      // )
+      .where(
+        and(
+          contains('title', 'group'),
+          le('dueOn', dueOnDate)
+        )
+      )
       .build();
 
     // add sorting
-    // query.orderBy({
-    //   field: 'title',
-    //   order: 'ASCENDING'
-    // });
+    query.orderBy({
+      field: 'title',
+      order: 'ASCENDING'
+    });
 
     // add paging
-    // query.withFirstResult(1)
-    // .withMaxResults(10);
+    query.withFirstResult(1)
+    .withMaxResults(10);
 
     // fetch data
     this.requisitions$ = query.fetch();
+    */
 
     // add data source
-    // this.dataSource$ = this.dataSourceFactory.createTableDataSource<Requisition>(this.store);
+    this.dataSource$ = this.dataSourceFactory.createTableDataSource<Requisition>(this.store);
   }
 
 }
