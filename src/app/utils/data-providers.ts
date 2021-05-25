@@ -5,6 +5,7 @@ import {
   BaseEntity,
   BasePredicate,
   ContainsPredicate,
+  EntityDTOType,
   EntityStore,
   EntityStoreBuilderFactory,
   EntityType,
@@ -17,7 +18,7 @@ import {
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-export class EntityStoreDataProvider<T extends BaseEntity> extends DataProvider<T> {
+export class EntityStoreDataProvider<T extends BaseEntity<EntityDTOType<never>>> extends DataProvider<T> {
 
   constructor(private store: EntityStore<T>, private field: keyof T) {
     super();
@@ -26,7 +27,9 @@ export class EntityStoreDataProvider<T extends BaseEntity> extends DataProvider<
   fetch(params: Map<string, any>): Observable<any[]> {
     let query: Query<T>;
     if (params.has('query') && params.get('query') !== '*') {
-      const predicate: Predicate<T> = new ContainsPredicate(this.field as keyof T, params.get('query') as T[keyof T], false);
+      const predicate: Predicate<EntityDTOType<T>>
+        = new ContainsPredicate(this.field as keyof EntityDTOType<T>,
+          params.get('query') as EntityDTOType<T>[keyof EntityDTOType<T>], false);
       query = this.store.queryBuilder.where(predicate).build();
     } else {
       query = this.store.queryBuilder.build();
@@ -37,7 +40,7 @@ export class EntityStoreDataProvider<T extends BaseEntity> extends DataProvider<
   }
 }
 
-export class EntityStoreTableDataProvider<T extends BaseEntity> extends TableDataProvider<T> {
+export class EntityStoreTableDataProvider<T extends BaseEntity<EntityDTOType<never>>> extends TableDataProvider<T> {
   totalItems: number;
   items: T[];
 
@@ -45,9 +48,9 @@ export class EntityStoreTableDataProvider<T extends BaseEntity> extends TableDat
     super();
   }
 
-  static filterToPredicate<T>(filter: CollectionFilter): Predicate<T> {
-    const field = filter.field as keyof T;
-    const value = filter.value as T[keyof T];
+  static filterToPredicate<T>(filter: CollectionFilter): Predicate<EntityDTOType<T>> {
+    const field = filter.field as keyof EntityDTOType<T>;
+    const value = filter.value as EntityDTOType<T>[keyof EntityDTOType<T>];
     switch (filter.strategy) {
       case 'equalTo':
         return new EqPredicate(field, value);
@@ -59,11 +62,11 @@ export class EntityStoreTableDataProvider<T extends BaseEntity> extends TableDat
 
   }
 
-  static generatePredicate<T>(state: TableState): Predicate<T> {
+  static generatePredicate<T>(state: TableState): Predicate<EntityDTOType<T>> {
     if (!state.filterBy || state.filterBy.length === 0) {
-      return new BasePredicate<T>();
+      return new BasePredicate<EntityDTOType<T>>();
     }
-    const predicates: Predicate<T>[] = [];
+    const predicates: Predicate<EntityDTOType<T>>[] = [];
     state.filterBy.forEach(filter => {
       predicates.push(EntityStoreTableDataProvider.filterToPredicate(filter));
     });
@@ -74,14 +77,14 @@ export class EntityStoreTableDataProvider<T extends BaseEntity> extends TableDat
     }
   }
 
-  static generateOrderBy<T>(state: TableState): OrderBy<T>[] {
+  static generateOrderBy<T>(state: TableState): OrderBy<EntityDTOType<T>>[] {
     if (!state.sortBy || state.sortBy.length === 0) {
       return [];
     }
-    const orderBys: OrderBy<T>[] = [];
+    const orderBys: OrderBy<EntityDTOType<T>>[] = [];
     state.sortBy.forEach(sortBy => {
       orderBys.push({
-        field: (sortBy.field as keyof T),
+        field: (sortBy.field as keyof EntityDTOType<T>),
         order: (sortBy.direction === SortDirection.ASC) ? 'ASCENDING' : 'DESCENDING'
       });
     });
@@ -89,8 +92,8 @@ export class EntityStoreTableDataProvider<T extends BaseEntity> extends TableDat
   }
 
   fetch(state: TableState): Observable<T[]> {
-    const predicate: Predicate<T> = EntityStoreTableDataProvider.generatePredicate<T>(state);
-    const orderBys: OrderBy<T>[] = EntityStoreTableDataProvider.generateOrderBy<T>(state);
+    const predicate: Predicate<EntityDTOType<T>> = EntityStoreTableDataProvider.generatePredicate<T>(state);
+    const orderBys: OrderBy<EntityDTOType<T>>[] = EntityStoreTableDataProvider.generateOrderBy<T>(state);
     let query: Query<T> = this.store.queryBuilder.where(predicate).build();
     if (orderBys.length > 0) {
       query = query.orderBy(...orderBys);
@@ -115,17 +118,17 @@ export class EntityStoreDataSourceFactoryService {
 
   constructor(private builderFactory: EntityStoreBuilderFactory) { }
 
-  create<T extends BaseEntity>(store: EntityStore<T>, field: keyof T): EntityStoreDataProvider<T> {
+  create<T extends BaseEntity<EntityDTOType<T>>>(store: EntityStore<T>, field: keyof T): EntityStoreDataProvider<T> {
     return new EntityStoreDataProvider(store, field);
   }
 
-  createComboBoxDataSource<T extends BaseEntity>(entity: EntityType<T>, field: keyof T): ComboBoxDataSource<T> {
+  createComboBoxDataSource<T extends BaseEntity<EntityDTOType<T>>>(entity: EntityType<T>, field: keyof T): ComboBoxDataSource<T> {
     const store = this.builderFactory.create(entity).create();
     const provider: DataProvider<T> = this.create(store, field);
     return new ComboBoxDataSource(provider);
   }
 
-  createTableDataSource<T extends BaseEntity>(store: EntityStore<T>): TableDataSource<T> {
+  createTableDataSource<T extends BaseEntity<EntityDTOType<T>>>(store: EntityStore<T>): TableDataSource<T> {
     const provider: EntityStoreTableDataProvider<T> = new EntityStoreTableDataProvider(store);
     return new TableDataSource(provider);
   }

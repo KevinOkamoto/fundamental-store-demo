@@ -111,9 +111,6 @@ export class CheckoutPageComponent implements OnInit {
   }
 
   getFormValue(formGroup: FormGroup): Requisition {
-    return {
-      identity: () => this.formGroup.value.id,
-      ...formGroup.value
-    };
+    return new Requisition(formGroup.value);
   }
 }

@@ -5,18 +5,18 @@
       "title": "Ward Group",
       "subtitle": "Configurable clear-thinking challenge",
       "shippingAddress": {
+        "id": "dad97682-283a-4b76-a5ec-bf1b96b8d039",
+        "address": "P.O. Box 376, 8126 Phasellus Ave",
+        "city": "San Miguel",
+        "zip": "692219",
+        "country": "Maldives"
+      },
+      "billingAddress": {
         "id": "3147b44c-fc2e-4326-85b5-761f229f5ee2",
         "address": "816-292 Ipsum St.",
         "city": "Yellowknife",
         "zip": "7221",
         "country": "Paraguay"
-      },
-      "billingAddress": {
-        "id": "03efecde-c3cf-4873-9a0c-c2e7cfdf94f2",
-        "address": "2829 Neque. St.",
-        "city": "Marystown",
-        "zip": "571859",
-        "country": "Guyana"
       },
       "supplier": {
         "id": "a6a5f7c6-0508-42e4-8d22-9a71c3e7c624",
